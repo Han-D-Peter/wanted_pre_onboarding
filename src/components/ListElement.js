@@ -1,12 +1,14 @@
-import React from "react";
-
 const ListElement = ({ text, emMark }) => {
   return (
-    <li>
-      <a href="*" style={{ color: "#333333", fontSize: "13px" }}>
-        {text}
-      </a>
-      {emMark ? emMark : null}
+    <li style={{ display: "flex", alignItems: "center", position: "relative" }}>
+      <div>
+        <a href="*" style={{ color: "#333333", fontSize: "13px" }}>
+          {text}
+        </a>
+      </div>
+      <div style={{ position: "absolute", right: "-22px" }}>
+        {emMark ? emMark : null}
+      </div>
     </li>
   );
 };

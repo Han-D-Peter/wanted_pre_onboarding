@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Emtext from "./Emtext";
 import ListElement from "./ListElement";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineSearch } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
+import { VscBell } from "react-icons/vsc";
 import styled from "styled-components";
+import SeparatorVerti from "./SeparatorVerti";
+import ListIconNew from "./ListIconNew";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -15,7 +18,7 @@ const HeaderContainer = styled.header`
 
 const Navigation = styled.nav`
   font-family: 윤고딕330;
-  width: 1080px;
+  width: 1070px;
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -35,11 +38,32 @@ const Ul = styled.ul`
 
 const CenterUl = styled(Ul)`
   width: 533px;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const Aside = styled.aside`
+  width: 270px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
+const AsideUl = styled(Ul)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const ListIcon = styled.li`
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 function Header() {
+  const [mid, setMid] = useState(false);
   return (
     <HeaderContainer>
       <div style={{ maxWidth: "1080px" }}>
@@ -47,7 +71,7 @@ function Header() {
           <LeftSide>
             <div>
               <button style={{ marginRight: "11px" }}>
-                <FontAwesomeIcon icon={faBars} size="2x" />
+                <GiHamburgerMenu size={21} />
               </button>
             </div>
             <div style={{ fontFamily: "아름" }}>wanted</div>
@@ -61,44 +85,52 @@ function Header() {
             <ListElement text="프리랜서" />
             <ListElement text="AI 합격예측" emMark={<Emtext text="Beta" />} />
           </CenterUl>
-          <aside>
-            <Ul>
-              <li>
-                <button>
-                  <FontAwesomeIcon icon={faSearch} />
-                </button>
-              </li>
-              <li>
-                <button>
-                  <FontAwesomeIcon icon={faBell} />
-                </button>
-              </li>
-              <li
+          <Aside>
+            <AsideUl>
+              <ListIcon>
+                <ListIconNew icon={<AiOutlineSearch size={21} />} />
+              </ListIcon>
+              <ListIcon>
+                <ListIconNew icon={<VscBell size={19} />} newable={true} />
+              </ListIcon>
+              <ListIcon style={{ marginRight: "25px" }}>
+                <ListIconNew icon={<CgProfile size={19} />} newable={true} />
+              </ListIcon>
+              <div
                 style={{
-                  fontFamily: "YoonGodic320",
-                  width: "82px",
-                  height: "30px",
-                  border: "1px solid #E0E2E3",
-                  borderRadius: "20px",
+                  marginLeft: "-5px",
+                  width: "118px",
                   display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+                  justifyContent: "space-around",
                 }}
               >
-                <a href="*" style={{ color: "#666666" }}>
-                  기업 서비스
-                </a>
-              </li>
-              <li>
-                <button>프로필</button>
-              </li>
-              <li>
-                <button>
-                  <FontAwesomeIcon icon={faEllipsisH} />
-                </button>
-              </li>
-            </Ul>
-          </aside>
+                <SeparatorVerti />
+                <li
+                  style={{
+                    fontFamily: "YoonGodic320",
+                    width: "82px",
+                    height: "30px",
+                    border: "1px solid #E0E2E3",
+                    borderRadius: "20px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <a href="*" style={{ color: "#828282", fontSize: "13px" }}>
+                    기업 서비스
+                  </a>
+                </li>
+              </div>
+              {mid ? (
+                <ListIcon>
+                  <button>
+                    <FontAwesomeIcon icon={faEllipsisH} />
+                  </button>
+                </ListIcon>
+              ) : null}
+            </AsideUl>
+          </Aside>
         </Navigation>
       </div>
     </HeaderContainer>
