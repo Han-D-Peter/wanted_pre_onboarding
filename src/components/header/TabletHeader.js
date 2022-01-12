@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import Emtext from "./Emtext";
-import ListElement from "./ListElement";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
+import Emtext from "../Emtext";
+import ListElement from "../ListElement";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { VscBell } from "react-icons/vsc";
 import styled from "styled-components";
-import SeparatorVerti from "./SeparatorVerti";
-import ListIconNew from "./ListIconNew";
+import SeparatorVerti from "../SeparatorVerti";
+import ListIconNew from "../ListIconNew";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -64,7 +62,6 @@ const ListIcon = styled.li`
 `;
 
 function TabletHeader() {
-  const [mid, setMid] = useState(false);
   return (
     <HeaderContainer>
       <Navigation>
@@ -123,13 +120,6 @@ function TabletHeader() {
                 </a>
               </li>
             </div>
-            {mid ? (
-              <ListIcon>
-                <button>
-                  <FontAwesomeIcon icon={faEllipsisH} />
-                </button>
-              </ListIcon>
-            ) : null}
           </AsideUl>
         </Aside>
       </Navigation>

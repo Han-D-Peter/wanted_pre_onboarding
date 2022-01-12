@@ -1,12 +1,13 @@
 import { GlobalStyles } from "./styles";
-import Header from "./components/Header";
-import "./App.css";
+import Header from "./components/header/Header";
 import Separator from "./components/Separator";
 import { useMediaQuery } from "react-responsive";
-import DesktopHeader from "./components/DesktopHeader";
-import TabletHeader from "./components/TabletHeader";
-import WideMobileHeader from "./components/WideMobileHeader";
-import MobileWidthHeader from "./components/MobileWidthHeader";
+import DesktopHeader from "./components/header/DesktopHeader";
+import TabletHeader from "./components/header/TabletHeader";
+import WideMobileHeader from "./components/header/WideMobileHeader";
+import MobileWidthHeader from "./components/header/MobileWidthHeader";
+import "./App.css";
+import Main from "./components/main/Main";
 
 function App() {
   const isWideDesktopWidth = useMediaQuery({ query: "(min-width:1200px)" });
@@ -31,6 +32,7 @@ function App() {
       {isWideMobileWidth ? <WideMobileHeader /> : null}
       {isMobileWidth ? <MobileWidthHeader /> : null}
       <Separator />
+      <Main />
     </>
   );
 }

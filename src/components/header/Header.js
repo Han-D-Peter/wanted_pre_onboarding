@@ -1,16 +1,13 @@
-import React, { useState } from "react";
-import Emtext from "./Emtext";
-import ListElement from "./ListElement";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
+import Emtext from "../Emtext";
+import ListElement from "../ListElement";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { VscBell } from "react-icons/vsc";
 import styled from "styled-components";
-import SeparatorVerti from "./SeparatorVerti";
-import ListIconNew from "./ListIconNew";
-import { useMediaQuery } from "react-responsive";
+import SeparatorVerti from "../SeparatorVerti";
+import ListIconNew from "../ListIconNew";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -64,20 +61,6 @@ const ListIcon = styled.li`
 `;
 
 function Header() {
-  const isWideDesktopWidth = useMediaQuery({ query: "(min-width:1200px)" });
-  const isDesktopWidth = useMediaQuery({
-    query: "(min-width:1100px) and (max-width:1199px)",
-  });
-  const isTabletWidth = useMediaQuery({
-    query: "(min-width:992px) and (max-width:1099px)",
-  });
-  const isWideMobileWidth = useMediaQuery({
-    query: "(min-width:768px) and (max-width:991px)",
-  });
-  const isMobileWidth = useMediaQuery({
-    query: "(max-width:767px)",
-  });
-  const [mid, setMid] = useState(false);
   return (
     <HeaderContainer>
       <div style={{ maxWidth: "1080px" }}>
@@ -136,13 +119,6 @@ function Header() {
                   </a>
                 </li>
               </div>
-              {mid ? (
-                <ListIcon>
-                  <button>
-                    <FontAwesomeIcon icon={faEllipsisH} />
-                  </button>
-                </ListIcon>
-              ) : null}
             </AsideUl>
           </Aside>
         </Navigation>

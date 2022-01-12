@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import Emtext from "./Emtext";
-import ListElement from "./ListElement";
+import React from "react";
+import Emtext from "../Emtext";
+import ListElement from "../ListElement";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineSearch } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
 import { VscBell } from "react-icons/vsc";
 import styled from "styled-components";
-import SeparatorVerti from "./SeparatorVerti";
-import ListIconNew from "./ListIconNew";
+import ListIconNew from "../ListIconNew";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -18,9 +16,9 @@ const HeaderContainer = styled.header`
 `;
 
 const Navigation = styled.nav`
-  padding: 0 25px 0 10px;
   font-family: 윤고딕330;
-  width: 100%;
+  margin-left: 3%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +26,6 @@ const Navigation = styled.nav`
 `;
 
 const LeftSide = styled.div`
-  padding-left: 13px;
   width: 100%;
   height: 60px;
   font-size: 23px;
@@ -42,7 +39,7 @@ const Ul = styled.ul`
 `;
 
 const CenterUl = styled(Ul)`
-  width: 142px;
+  width: 55%;
   height: 50px;
   justify-content: space-evenly;
   align-items: center;
@@ -68,7 +65,7 @@ const ListIcon = styled.li`
   align-items: center;
 `;
 
-function MobileWidthHeader() {
+function WideMobileHeader() {
   return (
     <HeaderContainer>
       <Navigation>
@@ -81,9 +78,13 @@ function MobileWidthHeader() {
           <div style={{ fontFamily: "아름" }}>wanted</div>
         </LeftSide>
         <CenterUl>
-          <ListElement text="홈" />
           <ListElement text="채용" />
           <ListElement text="이벤트" />
+          <ListElement text="직군별 연봉" />
+          <ListElement text="이력서" />
+          <ListElement text="커뮤니티" emMark={<Emtext text="New" />} />
+          <ListElement text="프리랜서" />
+          <ListElement text="AI 합격예측" emMark={<Emtext text="Beta" />} />
         </CenterUl>
         <Aside>
           <AsideUl>
@@ -105,4 +106,4 @@ function MobileWidthHeader() {
   );
 }
 
-export default MobileWidthHeader;
+export default WideMobileHeader;
