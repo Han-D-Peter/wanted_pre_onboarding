@@ -10,6 +10,7 @@ import { VscBell } from "react-icons/vsc";
 import styled from "styled-components";
 import SeparatorVerti from "./SeparatorVerti";
 import ListIconNew from "./ListIconNew";
+import { useMediaQuery } from "react-responsive";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -63,6 +64,19 @@ const ListIcon = styled.li`
 `;
 
 function Header() {
+  const isWideDesktopWidth = useMediaQuery({ query: "(min-width:1200px)" });
+  const isDesktopWidth = useMediaQuery({
+    query: "(min-width:1100px) and (max-width:1199px)",
+  });
+  const isTabletWidth = useMediaQuery({
+    query: "(min-width:992px) and (max-width:1099px)",
+  });
+  const isWideMobileWidth = useMediaQuery({
+    query: "(min-width:768px) and (max-width:991px)",
+  });
+  const isMobileWidth = useMediaQuery({
+    query: "(max-width:767px)",
+  });
   const [mid, setMid] = useState(false);
   return (
     <HeaderContainer>
