@@ -105,6 +105,7 @@ function Header() {
                 <li
                   style={{
                     fontFamily: "YoonGodic320",
+                    marginLeft: "10px",
                     width: "82px",
                     height: "30px",
                     border: "1px solid #E0E2E3",

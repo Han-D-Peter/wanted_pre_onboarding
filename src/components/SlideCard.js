@@ -11,6 +11,7 @@ const ImgFrame = styled.div`
 `;
 
 const InfoBox = styled.div`
+  display: none;
   position: absolute;
   left: 20px;
   bottom: 30px;
@@ -38,10 +39,15 @@ const LinkBox = styled.div`
   color: #3366ff;
 `;
 
-const SlideCard = ({ data }) => {
+const SlideCard = ({ data, id }) => {
   return (
-    <ImgFrame key={data.id}>
-      <img src={data.img} alt="banner" />
+    <ImgFrame key={id}>
+      <img
+        src={data.img}
+        alt="banner"
+        width={1060}
+        style={{ WebkitUserDrag: "none" }}
+      />
       <InfoBox>
         <Title>{data.title}</Title>
         <Description>{data.description}</Description>
@@ -55,7 +61,7 @@ const SlideCard = ({ data }) => {
               marginLeft: "6px",
             }}
           >
-            >
+            {">"}
           </span>
         </LinkBox>
       </InfoBox>
