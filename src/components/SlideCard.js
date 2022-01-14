@@ -4,7 +4,7 @@ import Separator from "./Separator";
 const ImgFrame = styled.div`
   position: relative;
   margin: 0 10px 0 10px;
-  width: 1060px;
+  width: ${props => props.windowWidth}px;
   height: 300px;
   border-radius: 5px;
   overflow: hidden;
@@ -39,16 +39,16 @@ const LinkBox = styled.div`
   color: #3366ff;
 `;
 
-const SlideCard = ({ data, id }) => {
+const SlideCard = ({ data, idx, windowWidth }) => {
   return (
-    <ImgFrame key={id}>
+    <ImgFrame key={data.id} windowWidth={windowWidth} smallSize>
       <img
         src={data.img}
         alt="banner"
         width={1060}
         style={{ WebkitUserDrag: "none" }}
       />
-      <InfoBox>
+      <InfoBox id={idx}>
         <Title>{data.title}</Title>
         <Description>{data.description}</Description>
         <Separator />

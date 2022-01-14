@@ -1,13 +1,9 @@
 import styled, { css, keyframes } from "styled-components";
 import { slideInfo } from "../../slideInfo";
-import SlideCard from "../SlideCard";
-import {
-  MdOutlineKeyboardArrowLeft,
-  MdOutlineKeyboardArrowRight,
-} from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import { wait } from "../../utility";
 import { DIRECTION } from "../../constants";
+import SmallSlideCard from "../SmallSlideCard";
 
 const Container = styled.div`
   display: flex;
@@ -30,7 +26,7 @@ const Wrapper = styled.div`
   display: flex;
   margin-left: 0px;
   margin-right: 0px;
-  width: ${props => props.length * props.width}px;
+  width: ${props => props.length * (1120 - props.widthReduction)}px;
   overflow-x: scroll;
   ::-webkit-scrollbar {
     display: none;
@@ -50,37 +46,9 @@ const Wrapper = styled.div`
       : null}
 `;
 
-const RightBtn = styled.button`
-  position: absolute;
-  right: calc((100% - 1200px) / 2);
-  top: 215px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  opacity: 0.7;
-  height: 65px;
-  width: 30px;
-  border-radius: 10px;
-`;
-
-const LeftBtn = styled.button`
-  position: absolute;
-  left: calc((100% - 1200px) / 2);
-  top: 215px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  opacity: 0.7;
-  height: 65px;
-  width: 30px;
-  border-radius: 20px;
-`;
-
 const Slider = styled.div``;
 
-const Main = ({ width }) => {
+const SmallMain = ({ widthReduction }) => {
   const [data, setData] = useState([...slideInfo]);
   const [cursorOn, setCursorOn] = useState(false);
   const [mouseDownPosition, setMouseDownPosition] = useState(0);
@@ -91,27 +59,19 @@ const Main = ({ width }) => {
   const scrollRef = useRef();
 
   const moveRight = async moveLength => {
-    let nextCardInfoBox = document.getElementById("5");
-    nextCardInfoBox.style.display = "none";
     setDirection(DIRECTION.right);
     await wait(490);
     const firstNode = data.shift();
     setData([...data, firstNode]);
-    nextCardInfoBox = document.getElementById("5");
-    nextCardInfoBox.style.display = "block";
     setMoveDistance(0);
     setDirection(DIRECTION.stop);
   };
 
   const moveLeft = async moveLength => {
-    let previousCardInfoBox = document.getElementById("5");
-    previousCardInfoBox.style.display = "none";
     setDirection(DIRECTION.left);
     await wait(490);
     const lastNode = data.pop();
     setData([lastNode, ...data]);
-    previousCardInfoBox = document.getElementById("5");
-    previousCardInfoBox.style.display = "block";
     setMoveDistance(0);
     setDirection(DIRECTION.stop);
   };
@@ -164,11 +124,6 @@ const Main = ({ width }) => {
     }
   }, [mouseUpPosition]);
 
-  useEffect(() => {
-    const centerSlideCardInfo = document.getElementById("5");
-    centerSlideCardInfo.style.display = "block";
-  }, []);
-
   return (
     <div>
       <Container>
@@ -186,27 +141,24 @@ const Main = ({ width }) => {
             direction={direction}
             moveDistance={moveDistance}
             ref={scrollRef}
-            width={width}
+            width={1120 - widthReduction}
+            widthReduction={widthReduction}
             id="wrapper"
           >
             {data.map((data, idx) => (
-              <SlideCard key={idx} data={data} idx={idx} windowWidth={width} />
+              <SmallSlideCard
+                key={idx}
+                data={data}
+                idx={idx}
+                windowWidth={1120 - widthReduction}
+              />
             ))}
           </Wrapper>
         </Slider>
+        <div>{widthReduction}</div>
       </Container>
-      <LeftBtn onClick={moveLeft}>
-        <span style={{ opacity: "0.5" }}>
-          <MdOutlineKeyboardArrowLeft size={25} />
-        </span>
-      </LeftBtn>
-      <RightBtn onClick={moveRight}>
-        <span style={{ opacity: "0.5" }}>
-          <MdOutlineKeyboardArrowRight size={25} />
-        </span>
-      </RightBtn>
     </div>
   );
 };
 
-export default Main;
+export default SmallMain;

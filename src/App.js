@@ -8,8 +8,12 @@ import WideMobileHeader from "./components/header/WideMobileHeader";
 import MobileWidthHeader from "./components/header/MobileWidthHeader";
 import "./App.css";
 import Main from "./components/main/Main";
+import { useEffect } from "react";
+import useWindowDimensions from "./utility";
+import SmallMain from "./components/main/SmallMain";
 
 function App() {
+  const widthReduction = useWindowDimensions();
   const isWideDesktopWidth = useMediaQuery({ query: "(min-width:1200px)" });
   const isDesktopWidth = useMediaQuery({
     query: "(min-width:1100px) and (max-width:1199px)",
@@ -23,6 +27,7 @@ function App() {
   const isMobileWidth = useMediaQuery({
     query: "(max-width:767px)",
   });
+
   return (
     <>
       <GlobalStyles />
@@ -32,7 +37,11 @@ function App() {
       {isWideMobileWidth ? <WideMobileHeader /> : null}
       {isMobileWidth ? <MobileWidthHeader /> : null}
       <Separator />
-      <Main />
+      {isWideDesktopWidth ? (
+        <Main width={1060} />
+      ) : (
+        <SmallMain widthReduction={widthReduction} />
+      )}
     </>
   );
 }
