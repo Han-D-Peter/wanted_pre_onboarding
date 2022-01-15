@@ -38,7 +38,7 @@ const Ul = styled.ul`
 `;
 
 const CenterUl = styled(Ul)`
-  width: 55%;
+  width: 480px;
   height: 50px;
   justify-content: space-evenly;
   align-items: center;

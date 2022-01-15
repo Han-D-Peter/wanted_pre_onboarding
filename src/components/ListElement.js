@@ -6,7 +6,7 @@ const ListElement = ({ text, emMark }) => {
           {text}
         </a>
       </div>
-      <div style={{ position: "absolute", right: "-22px" }}>
+      <div style={{ position: "absolute", right: "-20px" }}>
         {emMark ? emMark : null}
       </div>
     </li>

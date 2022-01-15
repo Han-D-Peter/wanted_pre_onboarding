@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
-  transform: translate3d(${props => props.moveRealTime}px, 0, 0);
+  transform: translate3d(${props => props.moveValue}px, 0, 0);
   ${props =>
     props.count !== 0
       ? css`
@@ -176,7 +176,6 @@ const Main = ({ width }) => {
           <Wrapper
             length={slideInfo.length}
             moveValue={onMouseMoveValue}
-            moveRealTime={onMouseMoveValue}
             direction={direction}
             moveDistance={moveDistance}
             width={width}
