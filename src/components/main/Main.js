@@ -144,6 +144,7 @@ const Main = ({ width }) => {
     return () => {
       clearInterval(slideInterval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   useEffect(() => {
@@ -156,6 +157,7 @@ const Main = ({ width }) => {
         moveLeft();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mouseUpPosition]);
 
   useEffect(() => {

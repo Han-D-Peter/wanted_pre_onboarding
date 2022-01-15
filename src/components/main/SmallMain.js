@@ -110,6 +110,7 @@ const SmallMain = ({ widthReduction }) => {
     return () => {
       clearInterval(slideInterval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   useEffect(() => {
@@ -122,6 +123,7 @@ const SmallMain = ({ widthReduction }) => {
         moveLeft();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mouseUpPosition]);
 
   return (
