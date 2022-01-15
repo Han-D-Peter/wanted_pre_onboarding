@@ -8,7 +8,6 @@ import WideMobileHeader from "./components/header/WideMobileHeader";
 import MobileWidthHeader from "./components/header/MobileWidthHeader";
 import "./App.css";
 import Main from "./components/main/Main";
-import { useEffect } from "react";
 import useWindowDimensions from "./utility";
 import SmallMain from "./components/main/SmallMain";
 import { Helmet } from "react-helmet";
