@@ -103,32 +103,26 @@ const SmallMain = ({ widthReduction }) => {
     setOnMouseMoveValue(0);
   };
 
-  useEffect(
-    moveRight => {
-      const slideInterval = setInterval(() => {
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      moveRight();
+    }, 4000);
+    return () => {
+      clearInterval(slideInterval);
+    };
+  }, [data]);
+
+  useEffect(() => {
+    const dragSpace = Math.abs(mouseDownPosition - mouseUpPosition);
+
+    if (mouseDownPosition !== 0) {
+      if (mouseUpPosition < mouseDownPosition && dragSpace > 200) {
         moveRight();
-      }, 4000);
-      return () => {
-        clearInterval(slideInterval);
-      };
-    },
-    [data]
-  );
-
-  useEffect(
-    (mouseDownPosition, moveLeft, moveRight) => {
-      const dragSpace = Math.abs(mouseDownPosition - mouseUpPosition);
-
-      if (mouseDownPosition !== 0) {
-        if (mouseUpPosition < mouseDownPosition && dragSpace > 200) {
-          moveRight();
-        } else if (mouseUpPosition > mouseDownPosition && dragSpace > 200) {
-          moveLeft();
-        }
+      } else if (mouseUpPosition > mouseDownPosition && dragSpace > 200) {
+        moveLeft();
       }
-    },
-    [mouseUpPosition]
-  );
+    }
+  }, [mouseUpPosition]);
 
   return (
     <div>
