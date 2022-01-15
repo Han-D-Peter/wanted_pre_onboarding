@@ -24,7 +24,7 @@ const slideCardMove = (direction, moveDistance, screenWidth) => keyframes`
 
 const Wrapper = styled.div`
   display: flex;
-  margin-left: 0px;
+  margin-left: 25px;
   margin-right: 0px;
   width: ${props => props.length * (1120 - props.widthReduction)}px;
   overflow-x: scroll;
@@ -132,7 +132,6 @@ const SmallMain = ({ widthReduction }) => {
           onMouseUp={onMouseUp}
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
-          cursorOn={cursorOn}
         >
           <Wrapper
             length={slideInfo.length}

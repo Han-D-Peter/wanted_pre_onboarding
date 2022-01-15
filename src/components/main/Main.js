@@ -5,7 +5,7 @@ import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { wait } from "../../utility";
 import { DIRECTION } from "../../constants";
 
@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   ${props =>
     props.count !== 0
       ? css`
-          animation-duration: 0.5s;
+          animation-duration: 0.4s;
           animation-timing-function: ease-out;
           animation-name: ${slideCardMove(
             props.direction,
@@ -87,31 +87,25 @@ const Main = ({ width }) => {
   const [mouseUpPosition, setMouseUpPosition] = useState(0);
   const [onMouseMoveValue, setOnMouseMoveValue] = useState(0);
   const [moveDistance, setMoveDistance] = useState(0);
-  const [direction, setDirection] = useState(DIRECTION.stop);
-  const scrollRef = useRef();
 
-  const moveRight = async moveLength => {
-    let nextCardInfoBox = document.getElementById("5");
-    nextCardInfoBox.style.display = "none";
+  const [direction, setDirection] = useState(DIRECTION.stop);
+
+  const moveRight = async () => {
     setDirection(DIRECTION.right);
-    await wait(490);
+    await wait(390);
     const firstNode = data.shift();
     setData([...data, firstNode]);
-    nextCardInfoBox = document.getElementById("5");
-    nextCardInfoBox.style.display = "block";
     setMoveDistance(0);
     setDirection(DIRECTION.stop);
   };
 
-  const moveLeft = async moveLength => {
+  const moveLeft = async () => {
     let previousCardInfoBox = document.getElementById("5");
     previousCardInfoBox.style.display = "none";
     setDirection(DIRECTION.left);
-    await wait(490);
+    await wait(390);
     const lastNode = data.pop();
     setData([lastNode, ...data]);
-    previousCardInfoBox = document.getElementById("5");
-    previousCardInfoBox.style.display = "block";
     setMoveDistance(0);
     setDirection(DIRECTION.stop);
   };
@@ -185,7 +179,6 @@ const Main = ({ width }) => {
             moveRealTime={onMouseMoveValue}
             direction={direction}
             moveDistance={moveDistance}
-            ref={scrollRef}
             width={width}
             id="wrapper"
           >

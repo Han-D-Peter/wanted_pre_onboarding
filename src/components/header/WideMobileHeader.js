@@ -11,8 +11,7 @@ import ListIconNew from "../ListIconNew";
 
 const HeaderContainer = styled.header`
   display: flex;
-  // justify-content: center;
-  margin: 0 auto;
+  margin-left: 1%;
 `;
 
 const Navigation = styled.nav`

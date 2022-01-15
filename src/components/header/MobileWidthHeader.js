@@ -13,7 +13,6 @@ import ListIconNew from "../ListIconNew";
 
 const HeaderContainer = styled.header`
   display: flex;
-  // justify-content: center;
   margin: 0 auto;
 `;
 

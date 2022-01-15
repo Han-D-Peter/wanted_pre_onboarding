@@ -10,6 +10,7 @@ import SeparatorVerti from "../SeparatorVerti";
 import ListIconNew from "../ListIconNew";
 
 const HeaderContainer = styled.header`
+  margin-left: 25px;
   display: flex;
   justify-content: center;
 `;

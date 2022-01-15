@@ -11,6 +11,7 @@ import Main from "./components/main/Main";
 import { useEffect } from "react";
 import useWindowDimensions from "./utility";
 import SmallMain from "./components/main/SmallMain";
+import { Helmet } from "react-helmet";
 
 function App() {
   const widthReduction = useWindowDimensions();
@@ -30,6 +31,9 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <title>커리어 여정을 행복하게, 원티드</title>
+      </Helmet>
       <GlobalStyles />
       {isWideDesktopWidth ? <Header /> : null}
       {isDesktopWidth ? <DesktopHeader /> : null}

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import Separator from "./Separator";
 
 const ImgFrame = styled.div`
@@ -10,8 +10,27 @@ const ImgFrame = styled.div`
   overflow: hidden;
 `;
 
+const fadeInMotion = keyframes`
+  from{
+    opacity:0;
+  }
+  to{
+    opcity:1;
+  }
+`;
+
 const InfoBox = styled.div`
-  display: none;
+  ${props =>
+    props.selectedBox
+      ? css`
+          display: block;
+          animation-duration: 0.2s;
+          animation-timing-function: ease-out;
+          animation-name: ${fadeInMotion};
+        `
+      : "display:none;"}
+
+  opacity: 1;
   position: absolute;
   left: 20px;
   bottom: 30px;
@@ -39,7 +58,7 @@ const LinkBox = styled.div`
   color: #3366ff;
 `;
 
-const SlideCard = ({ data, idx, windowWidth }) => {
+const SlideCard = ({ data, idx, windowWidth, selected }) => {
   return (
     <ImgFrame key={data.id} windowWidth={windowWidth} smallSize>
       <img
@@ -48,7 +67,7 @@ const SlideCard = ({ data, idx, windowWidth }) => {
         width={1060}
         style={{ WebkitUserDrag: "none" }}
       />
-      <InfoBox id={idx}>
+      <InfoBox id={idx} selectedBox={idx === 5}>
         <Title>{data.title}</Title>
         <Description>{data.description}</Description>
         <Separator />
