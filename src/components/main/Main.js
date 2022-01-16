@@ -61,7 +61,7 @@ const RightBtn = styled.button`
   opacity: 0.7;
   height: 65px;
   width: 30px;
-  border-radius: 10px;
+  border-radius: 20px;
 `;
 
 const LeftBtn = styled.button`
