@@ -182,7 +182,13 @@ const Main = ({ width }) => {
             id="wrapper"
           >
             {data.map((data, idx) => (
-              <SlideCard key={idx} data={data} idx={idx} windowWidth={width} />
+              <SlideCard
+                key={idx}
+                data={data}
+                idx={idx}
+                windowWidth={width}
+                selected={idx === 6}
+              />
             ))}
           </Wrapper>
         </Slider>

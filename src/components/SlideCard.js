@@ -2,12 +2,18 @@ import styled, { css, keyframes } from "styled-components";
 import Separator from "./Separator";
 
 const ImgFrame = styled.div`
+  background-color: black;
   position: relative;
   margin: 0 10px 0 10px;
   width: ${props => props.windowWidth}px;
   height: 300px;
   border-radius: 5px;
   overflow: hidden;
+`;
+
+const ImgBox = styled.img`
+  webkituserdrag: "none";
+  opacity: ${props => (props.selectedBox ? 1.0 : 0.5)};
 `;
 
 const fadeInMotion = keyframes`
@@ -60,12 +66,12 @@ const LinkBox = styled.div`
 
 const SlideCard = ({ data, idx, windowWidth, selected }) => {
   return (
-    <ImgFrame key={data.id} windowWidth={windowWidth} smallSize>
-      <img
+    <ImgFrame key={data.id} windowWidth={windowWidth}>
+      <ImgBox
         src={data.img}
         alt="banner"
         width={1060}
-        style={{ WebkitUserDrag: "none" }}
+        selectedBox={idx === 5}
       />
       <InfoBox id={idx} selectedBox={idx === 5}>
         <Title>{data.title}</Title>
@@ -73,6 +79,7 @@ const SlideCard = ({ data, idx, windowWidth, selected }) => {
         <Separator />
         <LinkBox>
           <span>바로가기</span>
+          <span>{selected ? "selected" : "no"}</span>
           <span
             style={{
               fontSize: "12px",
