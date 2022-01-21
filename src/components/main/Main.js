@@ -157,7 +157,6 @@ const Main = ({ width }) => {
       }
     }
   }, [mouseUpPosition]);
-
   useEffect(() => {
     const centerSlideCardInfo = document.getElementById("5");
     centerSlideCardInfo.style.display = "block";
