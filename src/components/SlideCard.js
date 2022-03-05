@@ -12,7 +12,6 @@ const ImgFrame = styled.div`
 `;
 
 const ImgBox = styled.img`
-  webkituserdrag: "none";
   opacity: ${props => (props.selectedBox ? 1.0 : 0.5)};
 `;
 
@@ -72,6 +71,7 @@ const SlideCard = ({ data, idx, windowWidth, selected }) => {
         alt="banner"
         width={1060}
         selectedBox={idx === 5}
+        draggable={false}
       />
       <InfoBox id={idx} selectedBox={idx === 5}>
         <Title>{data.title}</Title>
